@@ -16,8 +16,6 @@ class RulesPage extends HTMLElement {
 		});
 		if (state.data.myStart == true) {
 			Router.go("/ready");
-		} else {
-			console.log("moco");
 		}
 	}
 

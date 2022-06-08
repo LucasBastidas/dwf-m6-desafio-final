@@ -2,9 +2,6 @@ import { Router } from "@vaadin/router";
 import { state } from "../../state";
 class ErrorPage extends HTMLElement {
 	connectedCallback() {
-		state.subscribe(() => {
-			this.render();
-		});
 		this.render();
 	}
 	addListeners() {
