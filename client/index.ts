@@ -1,0 +1,27 @@
+import "./pages/home-page/index";
+import "./pages/create-room-page/index";
+import "./pages/join-room-page/index";
+import "./pages/error-page/index";
+import "./pages/share-code-page/index";
+import "./pages/rules-page/index";
+import "./pages/ready-page/index";
+import "./pages/ready-play-page/index";
+import "./pages/play-page/index";
+import "./router";
+import { state } from "./state";
+import { initButtonComp } from "./components/button";
+import { initCountDownComp } from "./components/countdown";
+import { initPiedraPapelTijeraCompComp } from "./components/piedra-papel-tijera";
+import { initResultadoComp } from "./components/resultado";
+import { initScoreTableComp } from "./components/score-table";
+import { initTextComp } from "./components/text";
+import { initTitleComp } from "./components/title";
+
+initButtonComp();
+initCountDownComp();
+initPiedraPapelTijeraCompComp();
+initResultadoComp();
+initScoreTableComp();
+initTextComp();
+initTitleComp();
+state.listenDataBase();
