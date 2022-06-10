@@ -80,7 +80,7 @@ class PlayPage extends HTMLElement {
             padding-top:10px;
          }
          .boton-reiniciar{
-            padding-top: 10px;
+            margin-top: 10px;
          }
       `;
 		}, 1000);
