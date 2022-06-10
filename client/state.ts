@@ -61,7 +61,7 @@ const state = {
 		callback();
 	},
 	//Setea ID corto en el state
-	setShortId(shortId: Number, callback) {
+	setShortId(shortId, callback) {
 		const currentState = this.getState();
 		currentState.roomShortId = shortId;
 		this.setState(currentState);

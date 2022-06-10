@@ -76,7 +76,7 @@ class PlayPage extends HTMLElement {
          .empate{
             display:block;
          }
-         .boton{
+         .boton-salir{
             padding-top:10px;
          }
          .boton-reiniciar{
@@ -84,9 +84,27 @@ class PlayPage extends HTMLElement {
          }
       `;
 		}, 1000);
-		//BOTON//
+		//BOTONES//
 		const botonReiniciar = div.querySelector(".boton-otra-vez");
 		botonReiniciar.addEventListener("click", () => {
+			const roomShortId = state.data.roomShortId;
+			const myNick = state.data.myNickName;
+			state.setFullRestart(() => {
+				state.setNickName(myNick, () => {
+					state.setShortId(roomShortId, () => {
+						state.signUp(() => {
+							state.getRoomId(() => {
+								state.joinRoom(() => {
+									Router.go("/rules-room");
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+		const botonSalir = div.querySelector(".boton-salir");
+		botonSalir.addEventListener("click", () => {
 			state.setFullRestart(() => {
 				Router.go("/");
 			});
@@ -148,7 +166,8 @@ class PlayPage extends HTMLElement {
 			}" vos= "${state.data.myWins + 1}" rival= "${
 				state.data.otherWins
 			}" ></score-table>
-         <button-element class="boton-otra-vez">Terminar.</button-element>
+         <button-element class="boton-otra-vez">Volver a jugar!.</button-element>
+         <button-element class="boton-salir" color="red">Salir.</button-element>
          
       `;
 			//SI EL OTRO GANA
@@ -167,7 +186,8 @@ class PlayPage extends HTMLElement {
 			}"vos= "${state.data.myWins}" rival= "${
 				state.data.otherWins + 1
 			}" ></score-table>
-         <button-element class="boton-otra-vez">Terminar.</button-element>                  
+         <button-element class="boton-otra-vez">Volver a jugar!.</button-element>                  
+         <button-element class="boton-salir" color="red">Salir.</button-element>                  
          `;
 		} else {
 			div.innerHTML = `
@@ -176,7 +196,8 @@ class PlayPage extends HTMLElement {
          <piedra-papel-tijera class="yo" size="grande" select="${state.data.myChoice}"></piedra-papel-tijera>
          <div class="result-empate-cont">
          <title-element color="blue" class="empate">EMPATE</title-element>
-         <button-element class="boton-otra-vez">Terminar.</button-element>                  
+         <button-element class="boton-otra-vez">Volver a jugar!.</button-element>                  
+         <button-element class="boton-salir" color="red">Salir.</button-element>                  
          `;
 		}
 		this.appendChild(div);
