@@ -149,20 +149,24 @@ const state = {
 	signUp(callback) {
 		const currentState = this.getState();
 		console.log("hola soy signup");
-		fetch("/signup", {
-			method: "post",
-			headers: { "content-type": "application/json" },
-			body: JSON.stringify({
-				nickName: this.data.myNickName,
-			}),
-		}).then((res) => {
-			res.json().then((data) => {
-				console.log(data);
-				currentState.myId = data.id;
-				this.setState(currentState);
-				callback();
+		try {
+			fetch("/signup", {
+				method: "post",
+				headers: { "content-type": "application/json" },
+				body: JSON.stringify({
+					nickName: this.data.myNickName,
+				}),
+			}).then((res) => {
+				res.json().then((data) => {
+					console.log(data);
+					currentState.myId = data.id;
+					this.setState(currentState);
+					callback();
+				});
 			});
-		});
+		} catch (error) {
+			console.log(error);
+		}
 	},
 	//Crea un Room en la rtdb
 	createRoom(callback) {
