@@ -36,7 +36,11 @@ app.post("/signup", (req, res) => {
 				searchResponse.docs.map((doc) => {
 					const id = doc.id;
 					// console.log(doc.id);
-					res.json({ message: "user already exist ", id: id, new: false });
+					return res.json({
+						message: "user already exist ",
+						id: id,
+						new: false,
+					});
 				});
 			}
 		});
